@@ -11,8 +11,8 @@ import { Cart } from "./cart.entity";
 @Index("uq_order_cart_id", ["cartId"], { unique: true })
 @Entity("order")
 export class Order {
-  @PrimaryGeneratedColumn({ type: "int", name: "oder_id", unsigned: true })
-  oderId: number;
+  @PrimaryGeneratedColumn({ type: "int", name: "order_id", unsigned: true })
+  orderId: number;
 
   @Column( {
     type: "timestamp",
@@ -37,7 +37,7 @@ export class Order {
   })
   status: "rejected" | "accepted" | "shipped" | "pending";
 
-  @OneToOne(() => Cart, (cart) => cart.oder, {
+  @OneToOne(() => Cart, (cart) => cart.order, {
     onDelete: "NO ACTION",
     onUpdate: "CASCADE",
   })
