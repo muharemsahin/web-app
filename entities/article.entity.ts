@@ -26,8 +26,8 @@ export class Article {
   @Column( { type:"int", name: "category_id", unsigned: true })
   categoryId: number;
 
-  @Column( { type:"varchar", name: "except", length: 255 })
-  except: string;
+  @Column( { type:"varchar", name: "excerpt", length: 255 })
+  excerpt: string;
 
   @Column( { type: "text" })
   description: string;
@@ -57,7 +57,7 @@ export class Article {
   @OneToOne(
     () => Category,
      (category) => category.article, {
-    onDelete: "RESTRICT",
+    onDelete: "NO ACTION",
     onUpdate: "CASCADE",
   })
   //aritcle_id
