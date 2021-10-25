@@ -1,9 +1,12 @@
-import { Body, Controller, Get, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Put, UploadedFile, UseInterceptors } from "@nestjs/common";
+import { FileInterceptor } from "@nestjs/platform-express";
 import { Administrator } from "entities/administrator.entity";
 import { AddAdministratorDto } from "src/dtos/administrator/add.administrator.dto";
 import { EditAdminAdministratorDto } from "src/dtos/administrator/edit.administrator.dto";
 import { ApiResponse } from "src/misc/api.responose.class";
 import { AdministratorService } from "src/services/administrator/administrator.service";
+
+
 
 @Controller('api/administrator')
 export class AdministratorController{
@@ -40,4 +43,7 @@ export class AdministratorController{
          edit(@Param('id') id: number, @Body() data: EditAdminAdministratorDto): Promise<Administrator | ApiResponse>{
              return this.administratorService.editById(id,data);
          }
+
+
+         
 }
